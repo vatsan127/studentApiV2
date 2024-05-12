@@ -1,4 +1,4 @@
-# studentApiV2-release_1.0
+# studentApiV2-release
 FROM openjdk:17
 
 WORKDIR /app
