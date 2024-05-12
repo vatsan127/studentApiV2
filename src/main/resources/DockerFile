@@ -1,0 +1,10 @@
+# studentApiV2-release_1.0
+FROM openjdk:17
+
+WORKDIR /app
+
+COPY studentApiV2-release.jar /app/studentApiV2-release.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "/app/studentApiV2-release.jar"]
