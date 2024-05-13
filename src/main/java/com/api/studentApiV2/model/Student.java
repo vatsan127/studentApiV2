@@ -5,23 +5,21 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
-import org.springframework.validation.annotation.Validated;
 
-@Validated
+@Valid
 public record Student(
 
-        Long stdId,
+        Long id,
         @NotBlank(message = "Name is required")
         @Size(min = 3, message = "Name should have minimum 3 characters")
-        String stdName,
+        String name,
 
-        @Email @NotBlank(message = "Email is required")
-        @Size(min = 3, message = "Name should have minimum 3 characters")
-        String stdEmail,
+        @Email
+        @NotBlank(message = "Email is required")
+        String email,
 
         @Valid
-        Address Address
+        Address address
 
 ) {
 }
