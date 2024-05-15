@@ -15,12 +15,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student create(Student student) {
-        return null;
+        return dao.save(student);
     }
 
     @Override
     public List<Student> getAllStd() {
-        return null;
+        return dao.findAllStd();
     }
 
     @Override

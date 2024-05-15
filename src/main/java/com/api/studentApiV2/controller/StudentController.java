@@ -10,7 +10,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-@RestController("/student")
+@RestController
 public class StudentController {
     private StudentService studentService;
 
@@ -23,7 +23,7 @@ public class StudentController {
     public ResponseEntity<Student> create(@Valid @RequestBody Student std) {
         Student savedStd = studentService.create(std);
         URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/id").buildAndExpand(savedStd.id()).toUri();
-        return ResponseEntity.created(location).build();
+        return ResponseEntity.created(location).body(savedStd);
     }
 
     @GetMapping("/")

@@ -3,13 +3,14 @@ owner-name: srivatsan
 server:
   port: 8000
   servlet:
-    context-path: /api/v2/
+    context-path: /student/api/v2
 
 spring:
   application:
     name: studentApiV2
   datasource:
-    url: jdbc:mysql://svc-3482219c-a389-4079-b18b-d50662524e8a-shared-dml.aws-virginia-6.svc.singlestore.com:3333/student
-    username: srivatsan-12072001
-    password: T09BsaNJeAdcNcHKtihcB2r7GnnKFgqy
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      jdbc-url: jdbc:mysql://svc-3482219c-a389-4079-b18b-d50662524e8a-shared-dml.aws-virginia-6.svc.singlestore.com:3333/student
+      username: srivatsan-12072001
+      password: T09BsaNJeAdcNcHKtihcB2r7GnnKFgqy
+      driver-class-name: com.mysql.cj.jdbc.Driver

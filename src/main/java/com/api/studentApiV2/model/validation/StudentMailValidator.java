@@ -11,13 +11,6 @@ public class StudentMailValidator implements ConstraintValidator<StudentMail, St
     public StudentMailValidator(ApplicationConfig applicationConfig) {
         this.config = applicationConfig;
     }
-/*
-
-    @Override
-    public void initialize(StudentMail constraintAnnotation) {
-        // No initialization needed
-    }
-*/
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {

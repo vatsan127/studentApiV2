@@ -16,10 +16,13 @@ public record Student(
 
         @Email
         @NotBlank(message = "Email is required")
-        String email,
+        String email
 
-        @Valid
-        Address address
+/*        @Valid
+        Address address*/
 
 ) {
+    public Student setId(Long stdId) {
+        return new Student(stdId, name(), email());
+    }
 }
