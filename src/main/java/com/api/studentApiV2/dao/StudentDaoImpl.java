@@ -5,13 +5,16 @@ import com.api.studentApiV2.constant.QueryConstant;
 import com.api.studentApiV2.model.Student;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class StudentDaoImpl implements StudentDao {
-    //    private JdbcTemplate jdbcTemplate;
+
     private SingleStoreConfig config;
     private StudentRowMapper rowMapper;
     private final Logger log = LoggerFactory.getLogger(StudentDaoImpl.class);
@@ -49,7 +52,17 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public Student findById(Long id) {
-        return null;
+        Student student = null;
+        try (Connection conn = config.getDataSource().getConnection();
+             PreparedStatement ps = conn.prepareStatement(QueryConstant.SELECT_STUDENT_BY_ID);
+             ResultSet resultSet = ps.executeQuery()) {
+            while (resultSet.next()) {
+                student = rowMapper.mapRow(resultSet, resultSet.getRow());
+            }
+        } catch (SQLException e) {
+            log.error("SQLException occurred while retrieving students :: ", e);
+        }
+        return student;
     }
 
     @Override

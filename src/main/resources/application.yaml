@@ -6,6 +6,8 @@ server:
     context-path: /student/api/v2
 
 spring:
+  main:
+    banner-mode: off
   application:
     name: studentApiV2
   datasource:
@@ -14,3 +16,7 @@ spring:
       username: srivatsan-12072001
       password: T09BsaNJeAdcNcHKtihcB2r7GnnKFgqy
       driver-class-name: com.mysql.cj.jdbc.Driver
+
+logging:
+  level:
+    root: info

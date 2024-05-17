@@ -2,9 +2,12 @@ package com.api.studentApiV2.service;
 
 import com.api.studentApiV2.dao.StudentDao;
 import com.api.studentApiV2.model.Student;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 
 import java.util.List;
 
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class StudentServiceImpl implements StudentService {
 
     private StudentDao dao;
